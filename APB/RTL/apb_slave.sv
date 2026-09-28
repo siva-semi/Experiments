@@ -29,20 +29,24 @@ always@(posedge pclk) begin
         cpu_ready <= 1;
         pslverr   <= 0;
 
-          if(cpu_en && addr_valid) begin
-            if(cpu_wr) begin
-              mem[cpu_addr]  = cpu_wdata;
-              $display("Addr-0x%0h|Data-0x%0h |WRITE", cpu_addr, cpu_wdata); 
-            end else begin
-              cpu_rdata     = mem[cpu_addr];
-              $display("Addr-0x%0h|Data-0x%0h |READ", cpu_addr, cpu_rdata); 
-          end 
-          end
-          
-          else begin
-            pslverr         <= 1;
+          if(cpu_en) begin
+            if(addr_valid) begin
+              if(cpu_wr) begin
+                mem[cpu_addr]  = cpu_wdata;
+                 $display("Addr-0x%0h|Data-0x%0h |WRITE", cpu_addr, cpu_wdata); 
+              end 
+              else begin
+                cpu_rdata      <= mem[cpu_addr];
+                  $display("Addr-0x%0h|Data-0x%0h |READ", cpu_addr, cpu_rdata); 
+              end
+              end
+            else begin
+              pslverr <= 1;
             end
-
+          
+          end
         end
         end
         endmodule
+
+              
