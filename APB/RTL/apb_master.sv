@@ -21,15 +21,11 @@ localparam [1:0]
 //declaring states
 
     always@(posedge pclk) begin
-        if(!preset_n) begin
+        if(!preset_n)
             curr_state <= IDLE;
-        end 
-        else begin
+        else
           curr_state <= next_state;
-          
-              read_data_out <= cpu_rdata;
         end
-    end
 
    
 
@@ -74,8 +70,10 @@ localparam [1:0]
             cpu_wr        <= 0;
             cpu_en        <= 0;
         end else begin
+              if(!pwrite && cpu_en && cpu_ready)
+                read_data_out <= cpu_rdata;
 
-            case(next_state)
+            case(curr_state)
                 IDLE: begin
             cpu_addr      <= 0;
             cpu_wdata     <= 0;
