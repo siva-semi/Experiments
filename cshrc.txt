@@ -1,0 +1,102 @@
+#!/bin/csh
+setenv CDS_Netlisting_Mode Analog
+setenv QRC_ENABLE_QRCRACTION "t"
+setenv CDS_AUTO_64BIT ALL
+setenv CDS_AHDLCMI_ENABLE YES	
+setenv EDITOR gvim 
+
+#setenv LM_LICENSE_FILE 5280@rbcadence
+setenv LM_LICENSE_FILE 5280@rbcadence2
+setenv CDS_LIC_FILE $LM_LICENSE_FILE
+setenv LANG en_US
+
+###########################################################
+setenv TOOLHOME		/tools/cadence_march2021
+
+setenv LIBERATEHOME 	$TOOLHOME/LIBERATE201
+#setenv LIBERATEHOME 	$TOOLHOME/ALTOS121
+
+###########################################################
+#####################  CIC     ############################
+
+setenv CDSHOME	 	$TOOLHOME/IC618
+#setenv CDSHOME	 	$TOOLHOME/ICADVM201
+#setenv CDSHOME	 	$TOOLHOME/ICADVM181
+setenv ASSURAHOME	$TOOLHOME/ASSURA41
+setenv EXT_REL          $TOOLHOME/EXT181
+setenv PVSHOME  	$TOOLHOME/PVS201
+#setenv QRC_HOME		$TOOLHOME/QUANTUS201
+setenv QRC_HOME		$TOOLHOME/EXT181
+setenv MMSIMHOME  	$TOOLHOME/SPECTRE201
+
+###########################################################
+#####################  ASIC    ############################
+
+#setenv IUSHOME  	$TOOLHOME/INCISIVE152
+#setenv RCHOME  		$TOOLHOME/RC142
+setenv RCHOME  		$TOOLHOME/INNOVUS201
+setenv ETHOME 		$TOOLHOME/ET151
+setenv LECHOME 		$TOOLHOME/CONFRML202
+setenv ENCOUNTERHOME  	$TOOLHOME/EDI142  
+setenv ETSHOME  	$TOOLHOME/ETS131
+setenv INNOVUSHOME	$TOOLHOME/INNOVUS201
+setenv GENUSHOME /tools/cadence_march2021/GENUS201
+
+#setenv GENUSHOME	$TOOLHOME/GENUS201
+setenv MODUSHOME	$TOOLHOME/MODUS172
+#setenv INNOVUSHOME	$TOOLHOME/INNOVUS171
+setenv SSVHOME		$TOOLHOME/SSV202
+setenv	JASPERHOME	$TOOLHOME/jasper_2019.12
+#setenv XCELIUMHOME	$TOOLHOME/XCELIUM2209
+setenv XCELIUMHOME	$TOOLHOME/XCELIUM2009
+setenv VMANHOME		$TOOLHOME/VMANAGER2009
+################## CADENCE HELP FILES #####################
+setenv CDNSHELP_DOC	$LIBERATEHOME/doc:$CDSHOME/doc:$ASSURAHOME/doc:$EXT_REL/doc:$PVSHOME/doc:$QRC_HOME/doc:$MMSIMHOME/doc:$LECHOME/doc:$INNOVUSHOME/doc:$GENUSHOME/doc:$MODUSHOME/doc:$SSVHOME/doc:$JASPERHOME/doc
+
+###:$RCHOME/doc:$ETHOME/doc:$ETSHOME/doc:$ENCOUNTERHOME/doc:$IUSHOME/doc:
+ 
+
+###########################################################
+#####################  PCB     ############################
+
+setenv SPBHOME 		$TOOLHOME/SPB172
+
+###########################################################
+#####################  LIBRARIES  #########################
+
+setenv FOUNDRY 		$TOOLHOME/FOUNDRY
+setenv ANALOG		$TOOLHOME/FOUNDRY/analog
+setenv STDCELL		$TOOLHOME/FOUNDRY/stdcell
+
+###########################################################bin $PVSHOME/tools/dfII/bin
+
+setenv DIGITAL		$TOOLHOME/FOUNDRY/digital
+setenv dig_45nm		$DIGITAL/45nm
+setenv dig_90nm		$DIGITAL/90nm
+setenv dig_180nm	$DIGITAL/180nm
+
+###########################################################
+#setenv OA_HOME 		$TOOLHOME/EDI142/oa_v22.50.007/bin
+setenv CDS_INST_DIR 	$CDSHOME
+setenv CDSHOME 		$CDS_INST_DIR
+##setenv AMSHOME 		$IUSHOME
+setenv LD_LIBRARY_PATH 	$CDS_INST_DIR/tools/lib:$CDS_INST_DIR/tools/lib64/:$CDS_INST_DIR/tools/lib/64bit:$CDS_INST_DIR/tools/dfII/lib:$ETSHOME/tools/lib
+
+setenv LMGR		$TOOLHOME/LMGR
+
+#setenv LD_LIBRARY_PATH 	$IUSHOME/tools/lib:$ETSHOME/tools/lib
+
+###########################################################
+
+set path = ($LMGR $CDS_INST_DIR/bin $CDS_INST_DIR/tools/bin $CDS_INST_DIR/tools/dfII/bin $CDS_INST_DIR/share/bin $MMSIMHOME/tools/bin    $MMSIMHOME/tools/dfII/bin $MMSIMHOME/bin $MMSIMHOME/tools.lnx86/bin  $ASSURAHOME/bin $ASSURAHOME/tools/bin $ASSURAHOME/tools/dfII/bin $ASSURAHOME/tools.lnx86/dfII/bin $ASSURAHOME/tools.lnx86/dfII/bin $ASSURAHOME/share/bin $PVSHOME/tools/assura/bin $PVSHOME/tools/bin $PVSHOME/bin $PVSHOME/tools.lnx86/bin $PVSHOME/tools/dfII/bin $QRC_HOME/tools/QRCraction/bin $QRC_HOME/tools/bin $QRC_HOME/tools/dfII/bin $QRC_HOME/tools.lnx86/bin $QRC_HOME/tools.lnx86/QRCraction/bin $QRC_HOME/tools.lnx86/QRCraction/bin/64bit $QRC_HOME/bin $RCHOME/bin $RCHOME/share/bin $RCHOME/tools/dfII/bin $RCHOME/tools.lnx86/dfII/bin $RCHOME/tools/bin $RCHOME/tools.lnx86/bin $ENCOUNTERHOME/bin $ENCOUNTERHOME/tools/bin $ENCOUNTERHOME/tools/dfII/bin $ENCOUNTERHOME/share/bin $ETSHOME/bin $ETSHOME/tools/bin $ETSHOME/tools/dfII/bin $ETSHOME/tools.lnx86/dfII/bin $ETSHOME/tools.lnx86/dfII/bin $ETSHOME/share/bin $SPBHOME/bin $SPBHOME/tools/pcb/bin $SPBHOME/tools/dfII/bin $SPBHOME/tools.lnx86/dfII/bin $SPBHOME/tools.lnx86/dfII/bin $SPBHOME/tools.lnx86/pcb/bin $LECHOME/bin $LECHOME/tools/bin $LECHOME/tools/dfII/bin $LECHOME/tools.lnx86/dfII/bin $LECHOME/tools.lnx86/dfII/bin $LECHOME/share/bin  $ETHOME/bin $ETHOME/tools/bin $ETHOME/tools/dfII/bin $ETHOME/tools.lnx86/bin $ETHOME/tools.lnx86/dfII/bin $LIBERATEHOME/tools/bin $LIBERATEHOME/tools/dfII/bin $LIBERATEHOME/bin $LIBERATEHOME/tools.lnx86/dfII/bin $LIBERATEHOME/tools.lnx86/dfII/bin  $ETHOME/bin $ETHOME/tools/bin   $ETHOME/tools/dfII/bin $ETHOME/tools.lnx86/bin $ETHOME/tools.lnx86/dfII/bin $INNOVUSHOME/bin $INNOVUSHOME/tools/bin $INNOVUSHOME/tools/dfII/bin $INNOVUSHOME/share/bin $GENUSHOME/bin $GENUSHOME/share/bin $GENUSHOME/tools/dfII/bin $GENUSHOME/tools.lnx86/dfII/bin $GENUSHOME/tools/bin $GENUSHOME/tools.lnx86/bin $SSVHOME/bin $SSVHOME/tools/bin $SSVHOME/tools/dfII/bin $SSVHOME/tools.lnx86/dfII/bin $SSVHOME/tools.lnx86/dfII/bin $SSVHOME/share/bin $MODUSHOME/bin   $MODUSHOME/tools/bin $MODUSHOME/tools/dfII/bin $MODUSHOME/tools.lnx86/bin $MODUSHOME/tools.lnx86/dfII/bin $JASPERHOME/bin $XCELIUMHOME/tools/bin $XCELIUMHOME/tools/dfII/bin $XCELIUMHOME/bin $XCELIUMHOME/tools.lnx86/dfII/bin $XCELIUMHOME/share/bin $VMANHOME/bin $VMANHOME/tools/bin $VMANHOME/tools/dfII/bin $VMANHOME/share/bin $path  )
+
+
+set path =(/usr/bin/python $path)
+##
+
+###########################################################
+
+clear
+echo ""
+echo "Welcome to Cadence Tools Suite"
+echo ""
