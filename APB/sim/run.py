@@ -11,11 +11,11 @@ if len(sys.argv) < 2:
   print(f"Test arguments are: {VALID_TESTS}")
   sys.exit(1)
 
-test_name = sys.arg[1]
+test_name = sys.argv[1]
 
 if len(sys.argv) < 3:
   seed = random.randint(1,999999)
-else
+else:
   seed = sys.argv[2]
 
 if test_name not in VALID_TESTS:
@@ -37,8 +37,8 @@ print("=" * 50)
 
 source_files   = "apb_inf.sv apb_master.sv apb_slave.sv tb_top.sv"
 compiled_bin   = "sim"
-compile_cmd    = f"iverilog - g2012 -o {compiled_bin} {source_files}"
-sim_cmd        = f"vvp {compile_bin} +TEST={test_name} +SEED={seed}"
+compile_cmd    = f"iverilog -g2012 -o {compiled_bin} {source_files}"
+sim_cmd        = f"vvp {compiled_bin} +TEST={test_name} +SEED={seed}"
 print("=============Compiling the apb_interface=============")
 compile_result = subprocess.run(compile_cmd, shell=True, stdout=subprocess.PIPE, stderr=subprocess.STDOUT)
 compile_output = compile_result.stdout.decode()
@@ -61,8 +61,7 @@ with open(log_file, "w") as log:
   log.write(f"TIME     :   {timestamp}\n")
   log.write("=" * 50 + "\n\n")
 
-  sim_process = subprocess.Peopen
-  (
+  sim_process = subprocess.Popen(
       sim_cmd,
       shell  =  True,
       stdout =  subprocess.PIPE,
